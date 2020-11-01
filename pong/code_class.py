@@ -1,6 +1,6 @@
 import turtle
 
-
+import winsound
 
 
 
@@ -78,11 +78,14 @@ def check_border(ball, paddle_a,paddle_b):
 	if ball.gety() > 290:
 		ball.sety(290)
 		ball.dy *= -1
-
+		winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
+		#os.system("aplay bounce.wav&")
 
 	if ball.gety() < -290:
 		ball.sety(-290)
 		ball.dy *= -1
+		winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
+		#os.system("aplay bounce.wav&")
 
 
 	if ball.getx() > 390:
@@ -91,15 +94,17 @@ def check_border(ball, paddle_a,paddle_b):
 		score_a += 1
 		pen.clear()
 		pen.write("Player A : {} - Player B : {}".format(score_a,score_b), align = "center", font=("Courier",12,"normal"))
-
-
+		winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
+		#os.system("aplay bounce.wav&")
 	if ball.getx() < -390:
 		ball.reset()
 		ball.dx *= -1
 		score_b += 1
 		pen.clear()
 		pen.write("Player A : {} - Player B : {}".format(score_a,score_b), align = "center", font=("Courier",12,"normal"))
-	
+		winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
+		#os.system("aplay bounce.wav&")
+
 
 
 	if ball.getx() > 330 and (ball.gety() < paddle_b.gety() + 40 and ball.gety() > paddle_b.gety() - 40):
